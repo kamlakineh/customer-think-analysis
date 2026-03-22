@@ -1,0 +1,5 @@
+{
+  "name": "ClinicFlow Multi-Tenant Management",
+  "description": "A comprehensive multi-tenant clinic management system with admin and company dashboards, customer tracking, and doctor panels.",
+  "requestFramePermissions": []
+}
