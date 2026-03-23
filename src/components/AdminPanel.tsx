@@ -93,29 +93,29 @@ export default function AdminPanel({
         <div className="flex items-center justify-between">
           <button 
             onClick={() => setSelectedCompany(null)}
-            className="flex items-center space-x-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors text-sm font-bold"
+            className="flex items-center space-x-2 text-slate-600 hover:text-[#00bbff] transition-colors text-sm font-bold"
           >
             <ArrowLeft size={16} />
             <span>{t.backToCompanies}</span>
           </button>
           <div className="text-right">
-            <h2 className="text-lg font-bold text-blue-900 dark:text-white">{selectedCompany.name}</h2>
-            <p className="text-[10px] text-blue-500 uppercase tracking-widest font-bold">{t.manageClinicData}</p>
+            <h2 className="text-lg font-bold text-slate-900">{selectedCompany.name}</h2>
+            <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">{t.manageClinicData}</p>
           </div>
         </div>
 
         <div className="space-y-8">
           <section>
-            <h3 className="text-xs font-bold text-blue-900 dark:text-white mb-4 uppercase tracking-wider flex items-center space-x-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+            <h3 className="text-xs font-bold text-slate-900 mb-4 uppercase tracking-wider flex items-center space-x-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00bbff]"></span>
               <span>{t.analytics}</span>
             </h3>
             <Analytics customers={companyCustomers} language={language} />
           </section>
 
           <section>
-            <h3 className="text-xs font-bold text-blue-900 dark:text-white mb-4 uppercase tracking-wider flex items-center space-x-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+            <h3 className="text-xs font-bold text-slate-900 mb-4 uppercase tracking-wider flex items-center space-x-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00bbff]"></span>
               <span>{t.customers}</span>
             </h3>
             <CustomerTable 
@@ -138,29 +138,29 @@ export default function AdminPanel({
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-lg font-bold text-blue-900 dark:text-white">{t.companies}</h2>
-          <p className="text-[10px] text-blue-500 uppercase tracking-widest font-bold">{companies.length} {t.companies} registered</p>
+          <h2 className="text-lg font-bold text-slate-900">{t.companies}</h2>
+          <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">{companies.length} {t.companies} registered</p>
         </div>
         <button
           onClick={openAddModal}
-          className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-xs font-medium transition-all shadow-sm shadow-blue-500/20"
+          className="flex items-center space-x-2 bg-[#00bbff] text-white px-4 py-2 rounded-xl text-sm font-bold transition-all shadow-md hover:shadow-lg"
         >
-          <Plus size={14} />
+          <Plus size={18} />
           <span>{t.registerCompany}</span>
         </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {companies.map((company) => (
             <div 
               key={company.id || `company-${company.username}`}
               onClick={() => setSelectedCompany(company)}
-              className="group bg-white dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 p-4 rounded-xl hover:border-blue-500/50 transition-all cursor-pointer shadow-sm relative overflow-hidden"
+              className="group bg-white border border-slate-200 p-6 rounded-2xl hover:border-[#00bbff]/50 transition-all cursor-pointer shadow-sm hover:shadow-md relative overflow-hidden"
             >
-              <div className="absolute top-0 left-0 w-1 h-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="flex items-start justify-between mb-3">
-                <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-800 flex items-center justify-center text-blue-600 dark:text-blue-300">
-                  <Building2 size={20} />
+              <div className="absolute top-0 left-0 w-1 h-full bg-[#00bbff] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-[#00bbff]">
+                  <Building2 size={24} />
                 </div>
                 <div className="flex items-center space-x-1">
                   <button
@@ -168,43 +168,43 @@ export default function AdminPanel({
                       e.stopPropagation();
                       handleShare(company);
                     }}
-                    className="p-1.5 text-blue-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-800 rounded-lg transition-all"
+                    className="p-2 text-slate-400 hover:text-[#00bbff] hover:bg-slate-50 rounded-xl transition-all"
                     title={t.share}
                   >
-                    <Share2 size={14} />
+                    <Share2 size={16} />
                   </button>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       openEditModal(company);
                     }}
-                    className="p-1.5 text-blue-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-800 rounded-lg transition-all"
+                    className="p-2 text-slate-400 hover:text-[#00bbff] hover:bg-slate-50 rounded-xl transition-all"
                     title={t.edit}
                   >
-                    <Edit2 size={14} />
+                    <Edit2 size={16} />
                   </button>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       onDeleteCompany(company.id);
                     }}
-                    className="p-1.5 text-blue-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-800 rounded-lg transition-all"
+                    className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-500/10 rounded-xl transition-all"
                     title={t.delete}
                   >
-                    <Trash2 size={14} />
+                    <Trash2 size={16} />
                   </button>
                 </div>
               </div>
-              <h3 className="text-sm font-bold text-blue-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{company.name}</h3>
-              <div className="mt-3 space-y-1.5">
-                <div className="flex items-center justify-between text-[10px]">
-                  <span className="text-blue-500/70 dark:text-blue-400/70 uppercase tracking-wider font-bold">{t.id}:</span>
-                  <span className="text-blue-900 dark:text-blue-300 font-mono bg-blue-50 dark:bg-blue-950 px-1.5 rounded border border-blue-100/50 dark:border-blue-800">{company.username}</span>
+              <h3 className="text-base font-bold text-slate-900 transition-colors">{company.name}</h3>
+              <div className="mt-4 space-y-2">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-slate-400 uppercase tracking-widest font-bold">{t.id}:</span>
+                  <span className="text-slate-900 font-mono bg-slate-50 px-2 py-0.5 rounded border border-slate-200">{company.username}</span>
                 </div>
-                <div className="flex items-center justify-between text-[10px]">
-                  <span className="text-blue-500/70 dark:text-blue-400/70 uppercase tracking-wider font-bold">{t.pass}:</span>
-                  <div className="flex items-center space-x-1">
-                    <span className="text-blue-900 dark:text-blue-300 font-mono bg-blue-50 dark:bg-blue-950 px-1.5 rounded border border-blue-100/50 dark:border-blue-800">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-slate-400 uppercase tracking-widest font-bold">{t.pass}:</span>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-slate-900 font-mono bg-slate-50 px-2 py-0.5 rounded border border-slate-200">
                       {showPasswords[company.id] ? company.password : '••••••••'}
                     </span>
                     <button 
@@ -212,9 +212,9 @@ export default function AdminPanel({
                         e.stopPropagation();
                         togglePassword(company.id);
                       }}
-                      className="text-blue-400 hover:text-blue-600 dark:hover:text-blue-300"
+                      className="text-slate-400 hover:text-slate-600"
                     >
-                      {showPasswords[company.id] ? <EyeOff size={12} /> : <Eye size={12} />}
+                      {showPasswords[company.id] ? <EyeOff size={14} /> : <Eye size={14} />}
                     </button>
                   </div>
                 </div>
@@ -224,56 +224,56 @@ export default function AdminPanel({
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-blue-950/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-blue-900 border border-blue-100 dark:border-blue-800 rounded-2xl w-full max-w-xs p-5 shadow-2xl">
-            <h3 className="text-sm font-bold text-blue-900 dark:text-white mb-4">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white border border-slate-200 rounded-3xl w-full max-w-md p-8 shadow-2xl">
+            <h3 className="text-xl font-bold text-slate-900 mb-6">
               {editingCompany ? t.edit : t.registerCompany}
             </h3>
-            <form onSubmit={handleSubmit} className="space-y-3">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="block text-[10px] font-semibold text-blue-500 dark:text-blue-400 uppercase tracking-wider mb-1">{t.companyName}</label>
+                <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">{t.companyName}</label>
                 <input
                   required
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3 py-1.5 bg-blue-50 dark:bg-blue-950 border border-blue-100 dark:border-blue-800 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 dark:text-blue-100"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#00bbff]/20 text-slate-900"
                   placeholder="e.g. City Dental Clinic"
                 />
               </div>
               <div>
-                <label className="block text-[10px] font-semibold text-blue-500 dark:text-blue-400 uppercase tracking-wider mb-1">{t.username}</label>
+                <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">{t.username}</label>
                 <input
                   required
                   type="text"
                   value={formData.username}
                   onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-                  className="w-full px-3 py-1.5 bg-blue-50 dark:bg-blue-950 border border-blue-100 dark:border-blue-800 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 dark:text-blue-100"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#00bbff]/20 text-slate-900"
                   placeholder="e.g. citydental"
                 />
               </div>
               <div>
-                <label className="block text-[10px] font-semibold text-blue-500 dark:text-blue-400 uppercase tracking-wider mb-1">{t.password}</label>
+                <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">{t.password}</label>
                 <input
                   required
                   type="password"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="w-full px-3 py-1.5 bg-blue-50 dark:bg-blue-950 border border-blue-100 dark:border-blue-800 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 dark:text-blue-100"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#00bbff]/20 text-slate-900"
                   placeholder="••••••••"
                 />
               </div>
-              <div className="flex gap-2 mt-4">
+              <div className="flex gap-3 mt-8">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="flex-1 px-3 py-2 bg-blue-50 dark:bg-blue-800 text-blue-600 dark:text-blue-300 rounded-lg text-xs font-bold transition-all"
+                  className="flex-1 px-4 py-3 bg-slate-50 text-slate-600 rounded-xl text-sm font-bold transition-all hover:bg-slate-100"
                 >
                   {t.cancel}
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-xs font-bold transition-all shadow-md shadow-blue-500/20"
+                  className="flex-1 bg-[#00bbff] text-white py-3 rounded-xl text-sm font-bold transition-all shadow-lg hover:shadow-xl"
                 >
                   {editingCompany ? t.save : t.create}
                 </button>

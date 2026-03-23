@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { AuthState, Company, Customer, CustomerStatus, Theme, Language } from './types';
-import { mockCompanies, mockCustomers } from './mockData';
+import { AuthState, Company, Customer, CustomerStatus, Language } from './types';
 import Sidebar from './components/Sidebar';
 import CustomerTable from './components/CustomerTable';
 import Analytics from './components/Analytics';
 import AdminPanel from './components/AdminPanel';
 import Login from './components/Login';
-import ThemeToggle from './components/ThemeToggle';
 import LanguageToggle from './components/LanguageToggle';
 import { translations } from './translations';
 import { cn } from './lib/utils';
@@ -16,26 +14,13 @@ function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [companies, setCompanies] = useState<Company[]>([]);
   const [customers, setCustomers] = useState<Customer[]>([]);
-  const [theme, setTheme] = useState<Theme>('light');
   const [language, setLanguage] = useState<Language>('en');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme) setTheme(savedTheme);
-    
     const savedLang = localStorage.getItem('language') as Language;
     if (savedLang) setLanguage(savedLang);
   }, []);
-
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('theme', theme);
-  }, [theme]);
 
   useEffect(() => {
     localStorage.setItem('language', language);
@@ -234,18 +219,17 @@ function App() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-blue-950">
-        <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <div className="w-6 h-6 border-2 border-[#00bbff] border-t-transparent rounded-full animate-spin shadow-sm"></div>
       </div>
     );
   }
 
   if (!auth.user) {
     return (
-      <div className={theme}>
-        <div className="fixed top-4 right-4 z-50 flex items-center space-x-2">
+      <div className="bg-white min-h-screen">
+        <div className="fixed top-3 right-3 z-50 flex items-center space-x-2">
           <LanguageToggle language={language} setLanguage={setLanguage} />
-          <ThemeToggle theme={theme} toggleTheme={() => setTheme(theme === 'light' ? 'dark' : 'light')} />
         </div>
         <Login onLogin={handleLogin} language={language} />
       </div>
@@ -306,7 +290,7 @@ function App() {
   };
 
   return (
-    <div className={cn("flex h-screen bg-white dark:bg-blue-950 transition-colors", theme)}>
+    <div className="flex h-screen bg-white transition-colors">
       <Sidebar 
         role={auth.role!} 
         activeTab={activeTab} 
@@ -317,19 +301,18 @@ function App() {
       />
       
       <main className="flex-1 flex flex-col overflow-hidden">
-        <header className="h-14 border-b border-blue-100 dark:border-blue-900 bg-white dark:bg-blue-900/40 flex items-center justify-between px-6 shrink-0">
-          <h2 className="text-sm font-bold text-blue-900 dark:text-white uppercase tracking-wider">
+        <header className="h-14 border-b border-slate-200 bg-white/80 backdrop-blur-md flex items-center justify-between px-6 shrink-0 shadow-sm">
+          <h2 className="text-lg font-bold text-[#00bbff]">
             {activeTab === 'dashboard' ? t.dashboard : 
              activeTab === 'companies' ? t.companies : 
              activeTab === 'customers' ? t.reception : t.doctorPanel}
           </h2>
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2">
             <LanguageToggle language={language} setLanguage={setLanguage} />
-            <ThemeToggle theme={theme} toggleTheme={() => setTheme(theme === 'light' ? 'dark' : 'light')} />
           </div>
         </header>
 
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto p-6 bg-slate-50/30">
           <div className="max-w-6xl mx-auto">
             {renderContent()}
           </div>

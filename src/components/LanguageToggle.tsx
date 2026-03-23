@@ -9,23 +9,23 @@ interface LanguageToggleProps {
 
 export default function LanguageToggle({ language, setLanguage }: LanguageToggleProps) {
   return (
-    <div className="flex items-center space-x-1 bg-zinc-100 dark:bg-zinc-800 p-1 rounded-lg border border-zinc-200 dark:border-zinc-700">
+    <div className="flex items-center space-x-1 bg-slate-50 p-1 rounded-xl border border-slate-200 shadow-sm">
       <button
         onClick={() => setLanguage('en')}
-        className={`px-2 py-1 rounded text-[10px] font-bold transition-all ${
+        className={`px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-widest transition-all ${
           language === 'en' 
-            ? 'bg-blue-500 text-white shadow-sm' 
-            : 'text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300'
+            ? 'bg-[#00bbff] text-white shadow-md' 
+            : 'text-slate-400 hover:text-slate-600'
         }`}
       >
         EN
       </button>
       <button
         onClick={() => setLanguage('am')}
-        className={`px-2 py-1 rounded text-[10px] font-bold transition-all ${
+        className={`px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-widest transition-all ${
           language === 'am' 
-            ? 'bg-blue-500 text-white shadow-sm' 
-            : 'text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300'
+            ? 'bg-[#00bbff] text-white shadow-md' 
+            : 'text-slate-400 hover:text-slate-600'
         }`}
       >
         AM

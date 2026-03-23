@@ -1,5 +1,4 @@
 export type UserRole = 'ADMIN' | 'COMPANY';
-export type Theme = 'light' | 'dark';
 export type Language = 'en' | 'am';
 
 export interface Admin {

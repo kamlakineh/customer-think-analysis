@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Lock, User, ArrowRight } from 'lucide-react';
+import { Lock, User, Building2 } from 'lucide-react';
 import { Language } from '../types';
 import { translations } from '../translations';
 
@@ -19,63 +19,63 @@ export default function Login({ onLogin, language }: LoginProps) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-blue-950 p-4 transition-colors">
-      <div className="w-full max-w-xs">
-        <div className="text-center mb-6">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-500/30 mb-4">
-            <Lock size={24} />
-          </div>
-          <h1 className="text-xl font-bold text-blue-900 dark:text-white">{t.appName}</h1>
-          <p className="text-xs text-blue-500 dark:text-blue-400 mt-1 font-medium">{t.loginTitle}</p>
-        </div>
-
-        <div className="bg-white dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 p-6 rounded-2xl shadow-xl shadow-blue-100/50 dark:shadow-none">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-blue-500 dark:text-blue-400 uppercase tracking-wider ml-1">{t.username}</label>
-              <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-400" size={14} />
-                <input
-                  required
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2 bg-blue-50/30 dark:bg-blue-950/40 border border-blue-100 dark:border-blue-800 rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all text-blue-900 dark:text-blue-100"
-                  placeholder="admin or company_id"
-                />
+    <div className="min-h-screen bg-white flex items-center justify-center p-4 transition-colors">
+      <div className="w-full max-w-[320px] animate-in fade-in zoom-in duration-500">
+        <div className="bg-white border border-[#00bbff]/10 p-8 rounded-3xl shadow-2xl relative overflow-hidden group">
+          <div className="absolute -top-12 -right-12 w-24 h-24 bg-[#00bbff]/5 rounded-full blur-2xl opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
+          
+          <div className="relative">
+            <div className="flex flex-col items-center mb-8">
+              <div className="p-4 bg-[#00bbff]/5 rounded-2xl shadow-inner mb-4 border border-[#00bbff]/10">
+                <Building2 className="text-[#00bbff]" size={28} />
               </div>
+              <h2 className="text-lg font-bold text-[#00bbff] uppercase tracking-[0.2em]">{t.loginTitle}</h2>
+              <div className="h-0.5 w-8 bg-[#00bbff] mt-2 rounded-full opacity-20"></div>
             </div>
 
-            <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-blue-500 dark:text-blue-400 uppercase tracking-wider ml-1">{t.password}</label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-400" size={14} />
-                <input
-                  required
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2 bg-blue-50/30 dark:bg-blue-950/40 border border-blue-100 dark:border-blue-800 rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all text-blue-900 dark:text-blue-100"
-                  placeholder="••••••••"
-                />
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="space-y-2">
+                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">{t.username}</label>
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-300" size={16} />
+                  <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-[#00bbff]/20 transition-all text-slate-900"
+                    placeholder={t.username}
+                    required
+                  />
+                </div>
               </div>
-            </div>
 
-            <button
-              type="submit"
-              className="w-full flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl text-xs font-bold transition-all shadow-md shadow-blue-500/20 group"
-            >
-              <span>{t.loginButton}</span>
-              <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-            </button>
-          </form>
+              <div className="space-y-2">
+                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">{t.password}</label>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-300" size={16} />
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-[#00bbff]/20 transition-all text-slate-900"
+                    placeholder="••••••••"
+                    required
+                  />
+                </div>
+              </div>
 
-          <div className="mt-6 pt-6 border-t border-blue-50 dark:border-blue-800">
-            <p className="text-[10px] text-blue-400 dark:text-blue-500 text-center leading-relaxed">
-              {t.demoCredentials}
-            </p>
+              <button
+                type="submit"
+                className="w-full bg-[#00bbff] text-white py-3 rounded-xl text-xs font-bold uppercase tracking-widest transition-all shadow-md hover:shadow-lg hover:bg-[#00bbff]/90 active:scale-[0.98] mt-4"
+              >
+                {t.loginButton}
+              </button>
+            </form>
           </div>
         </div>
+        <p className="text-center mt-8 text-[10px] text-slate-300 font-bold uppercase tracking-[0.3em]">
+          © {new Date().getFullYear()} {t.appName}
+        </p>
       </div>
     </div>
   );
